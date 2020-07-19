@@ -1,0 +1,29 @@
+ssh -i aws_new.pem ubuntu@18.219.19.77
+ubuntu@ip-172-31-16-81:~$ mkdir first second
+ubuntu@ip-172-31-16-81:~$ ls
+first  second
+ubuntu@ip-172-31-16-81:~$ cd first
+ubuntu@ip-172-31-16-81:~/first$ echo>first.py
+ubuntu@ip-172-31-16-81:~/first$ echo "print(1)" > first.py
+ubuntu@ip-172-31-16-81:~/first$ cd
+ubuntu@ip-172-31-16-81:~$ cd second
+ubuntu@ip-172-31-16-81:~/second$ echo > second.py
+ubuntu@ip-172-31-16-81:~/second$ echo "print(2)" > second.py
+ubuntu@ip-172-31-16-81:~/second$ cd
+ubuntu@ip-172-31-16-81:~$ mv ./second/second.py ./first
+ubuntu@ip-172-31-16-81:~$ ls
+first  second
+ubuntu@ip-172-31-16-81:~$ cd first
+ubuntu@ip-172-31-16-81:~/first$ ls
+first.py  second.py
+ubuntu@ip-172-31-16-81:~/first$ cd
+ubuntu@ip-172-31-16-81:~$ rm -r second
+ubuntu@ip-172-31-16-81:~$ ls
+first
+ubuntu@ip-172-31-16-81:~$ mv first first_second
+ubuntu@ip-172-31-16-81:~$ ls
+first_second
+ubuntu@ip-172-31-16-81:~$ rm -r first_second
+ubuntu@ip-172-31-16-81:~$ ls
+ubuntu@ip-172-31-16-81:~$ 
+
