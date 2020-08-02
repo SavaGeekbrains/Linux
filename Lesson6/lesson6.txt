@@ -1,0 +1,183 @@
+(base) alexander@alexander-ThinkPad-E555:~ [](fix_error)[]*[]$ ssh -i  aws_new.pem ubuntu@18.219.19.77
+Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.4.0-1021-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Aug  2 18:05:37 UTC 2020
+
+  System load:  0.0               Processes:             104
+  Usage of /:   29.2% of 7.69GB   Users logged in:       0
+  Memory usage: 19%               IPv4 address for eth0: 172.31.16.81
+  Swap usage:   0%
+
+ * Are you ready for Kubernetes 1.19? It's nearly here! Try RC3 with
+   sudo snap install microk8s --channel=1.19/candidate --classic
+
+   https://www.microk8s.io/ has docs and details.
+
+58 updates can be installed immediately.
+0 of these updates are security updates.
+To see these additional updates run: apt list --upgradable
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Sun Aug  2 17:44:38 2020 from 91.190.179.120
+ubuntu@ip-172-31-16-81:~$ ls
+ubuntu@ip-172-31-16-81:~$ ls -la
+total 36
+drwxr-xr-x 4 ubuntu ubuntu 4096 Aug  2 18:04 .
+drwxr-xr-x 3 root   root   4096 Jul 14 16:56 ..
+-rw------- 1 ubuntu ubuntu  397 Aug  2 18:04 .bash_history
+-rw-r--r-- 1 ubuntu ubuntu  220 Feb 25 12:03 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Feb 25 12:03 .bashrc
+drwx------ 2 ubuntu ubuntu 4096 Jul 14 17:54 .cache
+-rw-r--r-- 1 ubuntu ubuntu  807 Feb 25 12:03 .profile
+drwx------ 2 ubuntu ubuntu 4096 Jul 14 16:56 .ssh
+-rw-r--r-- 1 ubuntu ubuntu    0 Aug  2 15:57 .sudo_as_admin_successful
+-rw------- 1 ubuntu ubuntu  763 Aug  2 18:04 .viminfo
+ubuntu@ip-172-31-16-81:~$ ls /data/
+ubuntu@ip-172-31-16-81:~$ sudo mount -a
+ubuntu@ip-172-31-16-81:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2357400   5691660  30% /
+devtmpfs          496940       0    496940   0% /dev
+tmpfs             501052       0    501052   0% /dev/shm
+tmpfs             100212     780     99432   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501052       0    501052   0% /sys/fs/cgroup
+/dev/loop0         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+/dev/loop2         98944   98944         0 100% /snap/core/9436
+/dev/loop1         28800   28800         0 100% /snap/amazon-ssm-agent/2012
+/dev/loop3         99328   99328         0 100% /snap/core/9665
+/dev/loop4         56320   56320         0 100% /snap/core18/1754
+/dev/loop5         56320   56320         0 100% /snap/core18/1880
+/dev/loop6         71040   71040         0 100% /snap/lxd/15457
+/dev/loop7         73088   73088         0 100% /snap/lxd/16100
+tmpfs             100208       0    100208   0% /run/user/1000
+ubuntu@ip-172-31-16-81:~$ lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0   18M  1 loop /snap/amazon-ssm-agent/1566
+loop1     7:1    0 28.1M  1 loop /snap/amazon-ssm-agent/2012
+loop2     7:2    0 96.5M  1 loop /snap/core/9436
+loop3     7:3    0   97M  1 loop /snap/core/9665
+loop4     7:4    0   55M  1 loop /snap/core18/1754
+loop5     7:5    0   55M  1 loop /snap/core18/1880
+loop6     7:6    0 69.3M  1 loop /snap/lxd/15457
+loop7     7:7    0 71.3M  1 loop /snap/lxd/16100
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+xvdf    202:80   0    2G  0 disk 
+ubuntu@ip-172-31-16-81:~$ sudo file -s /dev/xvdf
+/dev/xvdf: SGI XFS filesystem data (blksz 4096, inosz 512, v2 dirs)
+ubuntu@ip-172-31-16-81:~$ ls /
+bin  boot  data  dev  etc  home  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  sys  tmp  usr  var
+ubuntu@ip-172-31-16-81:~$ cd data
+-bash: cd: data: No such file or directory
+ubuntu@ip-172-31-16-81:~$ cd /data/
+ubuntu@ip-172-31-16-81:/data$ ls
+ubuntu@ip-172-31-16-81:/data$ ls -la
+total 8
+drwxr-xr-x  2 root root 4096 Aug  2 16:03 .
+drwxr-xr-x 20 root root 4096 Aug  2 17:43 ..
+ubuntu@ip-172-31-16-81:/data$ ls /data/
+ubuntu@ip-172-31-16-81:/data$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2357400   5691660  30% /
+devtmpfs          496940       0    496940   0% /dev
+tmpfs             501052       0    501052   0% /dev/shm
+tmpfs             100212     780     99432   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501052       0    501052   0% /sys/fs/cgroup
+/dev/loop0         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+/dev/loop2         98944   98944         0 100% /snap/core/9436
+/dev/loop1         28800   28800         0 100% /snap/amazon-ssm-agent/2012
+/dev/loop3         99328   99328         0 100% /snap/core/9665
+/dev/loop4         56320   56320         0 100% /snap/core18/1754
+/dev/loop5         56320   56320         0 100% /snap/core18/1880
+/dev/loop6         71040   71040         0 100% /snap/lxd/15457
+/dev/loop7         73088   73088         0 100% /snap/lxd/16100
+tmpfs             100208       0    100208   0% /run/user/1000
+ubuntu@ip-172-31-16-81:/data$ cd
+ubuntu@ip-172-31-16-81:~$ ls /data/
+ubuntu@ip-172-31-16-81:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2357400   5691660  30% /
+devtmpfs          496940       0    496940   0% /dev
+tmpfs             501052       0    501052   0% /dev/shm
+tmpfs             100212     780     99432   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501052       0    501052   0% /sys/fs/cgroup
+/dev/loop0         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+/dev/loop2         98944   98944         0 100% /snap/core/9436
+/dev/loop1         28800   28800         0 100% /snap/amazon-ssm-agent/2012
+/dev/loop3         99328   99328         0 100% /snap/core/9665
+/dev/loop4         56320   56320         0 100% /snap/core18/1754
+/dev/loop5         56320   56320         0 100% /snap/core18/1880
+/dev/loop6         71040   71040         0 100% /snap/lxd/15457
+/dev/loop7         73088   73088         0 100% /snap/lxd/16100
+tmpfs             100208       0    100208   0% /run/user/1000
+ubuntu@ip-172-31-16-81:~$ sudo mount /dev/xvdf /data
+ubuntu@ip-172-31-16-81:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2357400   5691660  30% /
+devtmpfs          496940       0    496940   0% /dev
+tmpfs             501052       0    501052   0% /dev/shm
+tmpfs             100212     780     99432   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501052       0    501052   0% /sys/fs/cgroup
+/dev/loop0         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+/dev/loop2         98944   98944         0 100% /snap/core/9436
+/dev/loop1         28800   28800         0 100% /snap/amazon-ssm-agent/2012
+/dev/loop3         99328   99328         0 100% /snap/core/9665
+/dev/loop4         56320   56320         0 100% /snap/core18/1754
+/dev/loop5         56320   56320         0 100% /snap/core18/1880
+/dev/loop6         71040   71040         0 100% /snap/lxd/15457
+/dev/loop7         73088   73088         0 100% /snap/lxd/16100
+tmpfs             100208       0    100208   0% /run/user/1000
+/dev/xvdf        2086912   47608   2039304   3% /data
+ubuntu@ip-172-31-16-81:~$ cd /data/
+ubuntu@ip-172-31-16-81:/data$ sudo touch test.txt
+ubuntu@ip-172-31-16-81:/data$ echo test > test.txt
+ubuntu@ip-172-31-16-81:/data$ ls
+test.txt
+ubuntu@ip-172-31-16-81:/data$ blkid
+/dev/xvda1: LABEL="cloudimg-rootfs" UUID="8475d229-7aa4-467c-9eb0-05e67cbb8b7f" TYPE="ext4" PARTUUID="0eee7edd-01"
+/dev/xvdf: UUID="6f34f629-599e-4304-b3f1-fd9fd74520da" TYPE="xfs"
+ubuntu@ip-172-31-16-81:/data$ pwd
+/data
+ubuntu@ip-172-31-16-81:/data$ cd ~
+ubuntu@ip-172-31-16-81:~$ ls /data/
+test.txt
+ubuntu@ip-172-31-16-81:~$ sudo vim /etc/fstab
+ubuntu@ip-172-31-16-81:~$ sudo vim /etc/fstab
+
+[No write since last change]
+/bin/bash: q: command not found
+
+shell returned 127
+
+Press ENTER or type command to continue
+ubuntu@ip-172-31-16-81:~$ sudo vim /etc/fstab
+ubuntu@ip-172-31-16-81:~$ sudo mount -a
+ubuntu@ip-172-31-16-81:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2357404   5691656  30% /
+devtmpfs          496940       0    496940   0% /dev
+tmpfs             501052       0    501052   0% /dev/shm
+tmpfs             100212     780     99432   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501052       0    501052   0% /sys/fs/cgroup
+/dev/loop0         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+/dev/loop2         98944   98944         0 100% /snap/core/9436
+/dev/loop1         28800   28800         0 100% /snap/amazon-ssm-agent/2012
+/dev/loop3         99328   99328         0 100% /snap/core/9665
+/dev/loop4         56320   56320         0 100% /snap/core18/1754
+/dev/loop5         56320   56320         0 100% /snap/core18/1880
+/dev/loop6         71040   71040         0 100% /snap/lxd/15457
+/dev/loop7         73088   73088         0 100% /snap/lxd/16100
+tmpfs             100208       0    100208   0% /run/user/1000
+/dev/xvdf        2086912   47608   2039304   3% /data
+ubuntu@ip-172-31-16-81:~$ 
